@@ -8,6 +8,6 @@ public class HelloController {
 
     @RequestMapping("hello")
     public String sayHello() {
-        return "Base Project Say: " + "Hello World!";
+        return "Thymeleaf Project Say: " + "Hello World!";
     }
 }

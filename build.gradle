@@ -16,12 +16,23 @@ buildscript {
     }
 }
 
+allprojects {
+    group = 'com.waylau.spring.boot.blog'
+    version = '1.0.0'
+
+    repositories {
+//        mavenCentral()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+    }
+}
+
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-group = 'com.waylau.spring.boot.blog'
-version = '1.0.0'
+//group = 'com.waylau.spring.boot.blog'
+//version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
@@ -31,10 +42,77 @@ repositories {
     }
 }
 
-
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+//    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+// 所有子项目通用配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    version = '1.0.0'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    //定义版本号
+    ext {
+        springBootVersion = '1.5.15.RELEASE'
+//        hibernateVersion = '5.2.2.Final'
+    }
+    ext['thymeleaf.version'] = '3.0.3.RELEASE'
+    ext['thymeleaf-layout-dialect.version'] = '2.2.0'
+
+    repositories {
+//        mavenCentral()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+    }
+
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+        }
+    }
+
+    configurations {
+        // 所有需要忽略的包定义在此
+        all*.exclude group: 'commons-httpclient'
+        all*.exclude group: 'commons-logging'
+        all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+    }
+
+    // 通用依赖
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+//        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+        // 测试依赖
+        testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    }
+
+/*    dependencyManagement {
+        imports {
+//            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:$springBootVersion"
+        }
+
+        dependencies {
+            dependency 'org.springframework.boot:spring-boot-starter-web:1.5.15.RELEASE'
+            // 测试依赖
+//            testCompile('org.springframework.boot:spring-boot-starter-test')
+        }
+    }*/
+
+    // 显示当前项目下所有用于 compile 的 jar.
+//    task listJars(description: 'Display all compile jars.') << {
+//        configurations.compile.each { File file -> println file.name }
+//    }
+}
+

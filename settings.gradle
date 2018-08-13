@@ -1,1 +1,6 @@
 rootProject.name = 'blog'
+include 'test:hello-world'
+findProject(':test:hello-world')?.name = 'hello-world'
+include 'test:thymeleaf'
+findProject(':test:thymeleaf')?.name = 'thymeleaf'
+
