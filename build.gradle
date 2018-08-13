@@ -31,8 +31,6 @@ allprojects {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-//group = 'com.waylau.spring.boot.blog'
-//version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
@@ -44,7 +42,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-//    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
@@ -63,7 +61,6 @@ subprojects {
 
     //定义版本号
     ext {
-        springBootVersion = '1.5.15.RELEASE'
 //        hibernateVersion = '5.2.2.Final'
     }
     ext['thymeleaf.version'] = '3.0.3.RELEASE'
@@ -92,7 +89,6 @@ subprojects {
     // 通用依赖
     dependencies {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-//        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
         // 测试依赖
         testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     }

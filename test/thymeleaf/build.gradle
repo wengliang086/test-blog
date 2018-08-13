@@ -1,3 +1,8 @@
+ext['thymeleaf.version'] = '3.0.3.RELEASE'
+ext['thymeleaf-layout-dialect.version'] = '2.2.0'
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    compile("org.thymeleaf:thymeleaf-spring4:3.0.3.RELEASE")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.0")
 }
