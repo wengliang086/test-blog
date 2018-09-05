@@ -1,16 +1,7 @@
 package com.waylau.spring.boot.blog.repository;
 
 import com.waylau.spring.boot.blog.domain.User;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface UserRepository {
-
-    User saveOrUpdateUser(User user);
-
-    void deleteUser(Long id);
-
-    User getUserById(Long id);
-
-    List<User> listUser();
+public interface UserRepository extends CrudRepository<User, Long> {
 }

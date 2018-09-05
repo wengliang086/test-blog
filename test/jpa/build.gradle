@@ -7,4 +7,6 @@ dependencies {
     compile("mysql:mysql-connector-java:6.0.5")
     // 为什么ext方式改变不了jar版本
     compile("org.hibernate:hibernate-core:5.2.8.Final")
+
+    runtime('com.h2database:h2:1.4.193')
 }
