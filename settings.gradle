@@ -1,6 +1,7 @@
-rootProject.name = 'blog'
+rootProject.name = 'test-blog'
 include 'test:hello-world'
 findProject(':test:hello-world')?.name = 'hello-world'
 include 'test:thymeleaf'
 findProject(':test:thymeleaf')?.name = 'thymeleaf'
-
+include 'test:jpa'
+findProject(':test:jpa')?.name = 'jpa'
