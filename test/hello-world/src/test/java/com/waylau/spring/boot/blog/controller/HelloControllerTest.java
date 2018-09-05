@@ -30,6 +30,6 @@ public class HelloControllerTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON);
         ResultActions resultActions = mockMvc.perform(requestBuilder);
         resultActions.andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Hello World!")));
+                .andExpect(content().string(equalTo("Hello Project Say: Hello World!")));
     }
 }
