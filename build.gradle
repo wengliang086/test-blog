@@ -93,6 +93,7 @@ subprojects {
     // 通用依赖
     dependencies {
         compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+        compile("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
         // 测试依赖
         testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     }
